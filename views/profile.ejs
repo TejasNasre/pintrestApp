@@ -20,8 +20,8 @@
     </label>
     <input type="file" id="profileImageInput" accept="image/*" style="display: none" onchange="changeProfileImage(event)">
 
-    <h1 id="username">John Doe</h1>
-    <div class="tagline">@johndoe</div>
+    <h1 id="username"><%= fullname %></h1>
+    <div class="tagline">@<%= username %></div>
     <p class="description">Passionate about web development and design.</p>
 
     <label for="imageInput" id="imageLabel">Add Photo</label>
