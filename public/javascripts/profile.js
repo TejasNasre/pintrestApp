@@ -1,5 +1,5 @@
 // Dummy data for posts and image posts
-const posts = [
+const posts = [ 
     { title: 'Post 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
     { title: 'Post 2', content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
     // Add more posts as needed

@@ -151,3 +151,10 @@ hr {
   text-decoration: none;
   color: rgb(255, 255, 255);
 }
+
+.error{
+  font-weight: 500;
+  color: red;
+  text-transform: capitalize;
+  margin: 7px 0;
+}

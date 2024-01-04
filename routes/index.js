@@ -12,7 +12,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/login", function (req, res) {
-  res.render("login");
+  res.render("login",{error : req.flash("error")});
 });
 
 router.get("/feed", function (req, res) {
@@ -39,6 +39,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login",
+    failureFlash : true
   }),
   function (req, res) {}
 );
