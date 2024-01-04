@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.username {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.tagline,
+.profile-tagline {
+  color: #777;
+}
+
+#settings-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-card,
+.image-post-card {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-post-card img {
+  width: 100%;
+  height: auto;
+}
+
+.add-post-container {
+  margin-top: 20px;
+}
+
+.add-post-container h2 {
+  margin-bottom: 10px;
+}
+
+#add-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-post-form label {
+  margin-top: 10px;
+}
+
+#add-post-form input {
+  margin-bottom: 10px;
+}
+
+#add-post-form button {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-post-form button:hover {
+  background-color: #0b7dda;
+}

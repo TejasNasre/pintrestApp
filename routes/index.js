@@ -11,8 +11,16 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/profile",isLoggedIn, function (req, res) {
-  res.send("profile");
+router.get("/login", function (req, res) {
+  res.render("login");
+});
+
+router.get("/feed", function (req, res) {
+  res.render("feed");
+});
+
+router.get("/profile", isLoggedIn, function (req, res) {
+  res.render("profile");
 });
 
 router.post("/register", function (req, res) {
@@ -40,7 +48,7 @@ router.get("/logout", function (req, res) {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.redirect("/login");
   });
 });
 
@@ -48,7 +56,7 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("/");
+  res.redirect("/login");
 }
 
 module.exports = router;

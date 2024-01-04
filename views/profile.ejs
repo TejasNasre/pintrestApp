@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../stylesheets/profile.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="profile-container">
+      <div class="profile-header">
+        <img
+          src="path/to/profile-picture.jpg"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+        <h1 class="username">Username</h1>
+        <p class="tagline">Some Tagline</p>
+        <p class="profile-tagline">Some Profile Tagline</p>
+        <button id="settings-btn" onclick="openSettings()">Settings</button>
+      </div>
+
+      <div class="add-post-container">
+        <h2>Add an Image Post</h2>
+        <form id="add-post-form">
+          <label for="image-url">Image URL:</label>
+          <input type="text" id="image-url" required />
+
+          <button type="button" onclick="addImagePost()">Add Image Post</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="post-cards" id="post-cards-container">
+      <!-- Posts and image posts will be dynamically added here using JavaScript -->
+    </div>
+
+    <script src="../javascripts/profile.js"></script>
+  </body>
+</html>
