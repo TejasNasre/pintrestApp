@@ -1,91 +1,57 @@
-// Dummy data for posts and image posts
-const posts = [ 
-    { title: 'Post 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { title: 'Post 2', content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-    // Add more posts as needed
-];
+function previewImage(event) {
+  const gallery = document.getElementById('imageGallery');
+  const profileImage = document.getElementById('profileImage');
+  const username = document.getElementById('username');
+  const imageDescriptionInput = document.getElementById('imageDescription');
 
-const imagePosts = [
-    { imageUrl: 'path/to/image1.jpg' },
-    { imageUrl: 'path/to/image2.jpg' },
-    // Add more image posts as needed
-];
+  for (const file of event.target.files) {
+    const description = imageDescriptionInput.value || 'No description';
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const card = createCard(e.target.result, description);
+      gallery.appendChild(card);
+    };
+    reader.readAsDataURL(file);
+  }
 
-// Function to open settings (you can customize this)
-function openSettings() {
-    alert('Settings button clicked!');
+  if (event.target.files.length > 0) {
+    const newProfileImage = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      profileImage.src = e.target.result;
+    };
+    reader.readAsDataURL(newProfileImage);
+  }
+  // Clear the input field after processing
+  imageDescriptionInput.value = '';
 }
 
-// Function to add a new post
-function addPost() {
-    // Implementation for text posts (if needed in the future)
+function changeProfileImage(event) {
+  const profileImage = document.getElementById('profileImage');
+
+  if (event.target.files.length > 0) {
+    const newProfileImage = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      profileImage.src = e.target.result;
+    };
+    reader.readAsDataURL(newProfileImage);
+  }
 }
 
-// Function to add a new image post
-function addImagePost() {
-    const imageUrlInput = document.getElementById('image-url');
+function createCard(imageSrc, text) {
+  const card = document.createElement('div');
+  card.className = 'card';
 
-    const imageUrl = imageUrlInput.value.trim();
+  const cardImage = document.createElement('img');
+  cardImage.src = imageSrc;
+  cardImage.alt = 'User Uploaded Image';
 
-    if (imageUrl) {
-        const imagePostCard = document.createElement('div');
-        imagePostCard.classList.add('image-post-card');
+  const cardText = document.createElement('p');
+  cardText.textContent = text;
 
-        const imageElement = document.createElement('img');
-        imageElement.src = imageUrl;
-        imageElement.alt = 'Image Post';
+  card.appendChild(cardImage);
+  card.appendChild(cardText);
 
-        imagePostCard.appendChild(imageElement);
-
-        const postCardsContainer = document.getElementById('post-cards-container');
-        postCardsContainer.appendChild(imagePostCard);
-
-        // Clear input field after adding the image post
-        imageUrlInput.value = '';
-    } else {
-        alert('Please enter the image URL for the post.');
-    }
-}
-
-// Display posts and image posts when the page loads
-window.onload = function () {
-    displayPosts();
-    displayImagePosts();
-};
-
-function displayPosts() {
-    const postCardsContainer = document.getElementById('post-cards-container');
-
-    posts.forEach(post => {
-        const postCard = document.createElement('div');
-        postCard.classList.add('post-card');
-
-        const title = document.createElement('h2');
-        title.innerText = post.title;
-
-        const content = document.createElement('p');
-        content.innerText = post.content;
-
-        postCard.appendChild(title);
-        postCard.appendChild(content);
-
-        postCardsContainer.appendChild(postCard);
-    });
-}
-
-function displayImagePosts() {
-    const postCardsContainer = document.getElementById('post-cards-container');
-
-    imagePosts.forEach(imagePost => {
-        const imagePostCard = document.createElement('div');
-        imagePostCard.classList.add('image-post-card');
-
-        const imageElement = document.createElement('img');
-        imageElement.src = imagePost.imageUrl;
-        imageElement.alt = 'Image Post';
-
-        imagePostCard.appendChild(imageElement);
-
-        postCardsContainer.appendChild(imagePostCard);
-    });
+  return card;
 }
