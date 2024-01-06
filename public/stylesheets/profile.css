@@ -70,10 +70,6 @@ h1 {
   color: #2980b9;
 }
 
-#imageInput, #profileImageInput {
-  display: none;
-}
-
 #imageLabel {
   cursor: pointer;
   color: #fff;
