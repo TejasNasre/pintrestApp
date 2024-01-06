@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile</title>
-  <link rel="stylesheet" href="../stylesheets/profile.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../stylesheets/profile.css" />
+  </head>
+  <body>
+    <header>
+      <h1>User Profile</h1>
+      <a href="/logout"><button>Logout</button></a>
+    </header>
 
-  <header>
-    <h1>User Profile</h1>
-    <a href="/logout"><button>Logout</button></a>
-  </header>
+    <div class="profile">
+      <label for="profileImageInput" id="profileImageLabel">
+        <img
+          src="profile.jpg"
+          alt="Profile Picture"
+          id="profileImage"
+          class="profile-image"
+        />
+        Change Profile Photo
+      </label>
+      <input
+        type="file"
+        id="profileImageInput"
+        accept="image/*"
+        style="display: none"
+        onchange="changeProfileImage(event)"
+      />
 
-  <div class="profile">
-    <label for="profileImageInput" id="profileImageLabel">
-      <img src="profile.jpg" alt="Profile Picture" id="profileImage" class="profile-image">
-      Change Profile Photo
-    </label>
-    <input type="file" id="profileImageInput" accept="image/*" style="display: none" onchange="changeProfileImage(event)">
-
-    <h1 id="username"><%= fullname %></h1>
-    <div class="tagline">@<%= username %></div>
-    <p class="description">Passionate about web development and design.</p>
-
-    <label for="imageInput" id="imageLabel">Add Photo</label>
-    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
-    <input type="text" id="imageDescription" placeholder="Enter image description">
-
-    <div class="gallery" id="imageGallery">
-      <!-- User's uploaded images will be displayed here -->
+      <h1 id="username"><%= fullname %></h1>
+      <div class="tagline">@<%= username %></div>
+      <p class="description">Passionate about web development and design.</p>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input
+          type="file"
+          name="file"
+          id="imageInput"
+          accept="image/*"
+          onchange="previewImage(event)"
+        />
+        <input
+          type="text"
+          id="imageDescription"
+          placeholder="Enter image description"
+        />
+        <button id="imageLabel" type="submit">upload Image</button>
+      </form>
+      <div class="gallery" id="imageGallery">
+        <!-- User's uploaded images will be displayed here -->
+      </div>
     </div>
-  </div>
 
-  <script src="../javascripts/profile.js"></script>
-</body>
+    <script src="../javascripts/profile.js"></script>
+  </body>
 </html>
